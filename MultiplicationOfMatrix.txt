@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+    
+public static Scanner scn = new Scanner(System.in);
+    
+public static void input(int[][]arr){
+    for(int i=0; i<arr.length; i++){
+        for(int j=0; j<arr[0].length; j++){ 
+            arr[i][j] = scn.nextInt();
+        }
+    }
+}
+public static void output(int[][]arr){
+    for(int i=0; i<arr.length; i++){
+        for(int j=0; j<arr[0].length; j++){
+            System.out.print(arr[i][j] + " "); 
+        }
+        System.out.println();
+    }
+}
+public static void multiply(int[][]a1,int[][]a2){
+    int n1 = a1.length;
+    int m1 = a1[0].length;
+    int n2 = a2.length;
+    int m2 = a2[0].length;
+    int [][]c = new int[n1][m2];
+    for(int i=0; i<n1; i++){
+        for(int j=0; j<m2; j++){
+            int sum =0;
+            for(int k=0; k<m1; k++){
+                sum +=a1[i][k]*a2[k][j];
+            }
+            c[i][j]=sum;
+        }
+    }
+    output(c);
+}
+
+public static void main(String[] args) throws Exception {
+    // write your code here
+    int n1 = scn.nextInt();
+    int m1 = scn.nextInt();
+    int [][]a1 = new int[n1][m1];
+    input(a1);
+    int n2 = scn.nextInt();
+    int m2 = scn.nextInt();
+    
+    if(m1!=n2){
+        System.out.println("Invalid input");
+    }else{
+        int [][]a2 = new int[n2][m2];
+        input(a2);
+        multiply(a1,a2);
+    }
+ }
+
+}
